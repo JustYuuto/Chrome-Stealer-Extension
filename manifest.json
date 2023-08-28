@@ -1,0 +1,16 @@
+{
+  "name": "Extension",
+  "description": "A Chrome Extension",
+  "manifest_version": 3,
+  "version": "1.0.0",
+  "permissions": [
+    "tabs", "scripting"
+  ],
+  "host_permissions": [
+    "http://*/*", "https://*/*"
+  ],
+  "content_scripts": [{
+    "matches": ["<all_urls>"],
+    "js": ["dist/content-script.js"]
+  }]
+}
