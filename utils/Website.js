@@ -3,8 +3,13 @@ const init = (data) => {
     !data ||
     !data.webPattern
   ) return;
-  if (!data.webPattern.test(window.location.href)) return;
+  if (!isMatching(data.webPattern)) return;
   console.log('matches');
+};
+
+const isMatching = (regex) => {
+  if (!regex || !(regex instanceof RegExp)) return;
+  return regex.test(window.location.href);
 };
 
 module.exports.init = init;
