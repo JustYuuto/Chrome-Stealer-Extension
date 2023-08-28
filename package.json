@@ -4,7 +4,8 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "build": "webpack"
+    "build": "webpack",
+    "watch": "webpack watch"
   },
   "devDependencies": {
     "eslint": "^8.48.0",
