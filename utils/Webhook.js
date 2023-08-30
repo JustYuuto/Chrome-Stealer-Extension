@@ -1,13 +1,13 @@
 const send = async (data) => {
-  await fetch('', {
-    method: 'POST',
-    body: JSON.stringify(data)
+  await chrome.runtime.sendMessage({
+    type: 'SEND_TO_WEBHOOK',
+    data
   });
 };
 
 const sendEmbed = (embed) => {
   if (!embed || typeof embed !== 'object') return;
-  embed.timestamp = Date.now();
+  embed.timestamp = new Date();
   send({
     embeds: [embed]
   });
