@@ -1,4 +1,4 @@
-chrome.runtime.onMessage.addListener(async (message) => {
+chrome.runtime.onMessage.addListener(async (message, sender, sendResponse) => {
   if (!message) return;
 
   const { type, data } = message;
