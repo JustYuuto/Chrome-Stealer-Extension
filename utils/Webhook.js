@@ -7,7 +7,7 @@ const send = async (data) => {
 
 const getMessage = async (messageId) => {
   return await chrome.runtime.sendMessage({
-    type: 'EDIT_WEBHOOK_MESSAGE',
+    type: 'GET_WEBHOOK_MESSAGE',
     data: messageId
   });
 };
