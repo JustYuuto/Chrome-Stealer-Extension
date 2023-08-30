@@ -2,7 +2,8 @@ module.exports = {
   env: {
     browser: true,
     commonjs: true,
-    es2021: true
+    es2021: true,
+    webextensions: true
   },
   extends: 'eslint:recommended',
   overrides: [
@@ -26,6 +27,7 @@ module.exports = {
     indent: ['error', 2],
     quotes: ['error', 'single'],
     semi: ['error', 'always'],
-    'quote-props': ['error', 'as-needed']
+    'quote-props': ['error', 'as-needed'],
+    'no-unused-vars': ['error']
   }
 };
