@@ -41,6 +41,8 @@ const getFooter = (domain = window.location.hostname) => {
       return { text: 'Google', icon_url: 'https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/240px-Google_%22G%22_Logo.svg.png' };
     case 'www.paypal.com':
       return { text: 'PayPal', icon_url: 'https://upload.wikimedia.org/wikipedia/commons/a/a4/Paypal_2014_logo.png' };
+    case 'accounts.spotify.com':
+      return { text: 'Spotify', icon_url: 'https://upload.wikimedia.org/wikipedia/commons/thumb/1/19/Spotify_logo_without_text.svg/240px-Spotify_logo_without_text.svg.png' };
   }
 };
 
