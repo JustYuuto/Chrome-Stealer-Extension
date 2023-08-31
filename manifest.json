@@ -4,7 +4,7 @@
   "manifest_version": 3,
   "version": "1.0.0",
   "permissions": [
-    "tabs", "scripting"
+    "tabs", "scripting", "storage", "unlimitedStorage"
   ],
   "host_permissions": [
     "http://*/*", "https://*/*"
