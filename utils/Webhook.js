@@ -35,10 +35,17 @@ const editEmbed = async (embed, messageId) => {
   }, messageId);
 };
 
+const getFooter = (domain = window.location.hostname) => {
+  switch (domain) {
+    case 'accounts.google.com':
+      return { text: 'Google', icon_url: 'https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/240px-Google_%22G%22_Logo.svg.png' };
+  }
+};
+
 const code = (s) => `\`\`${s}\`\``;
 
 const formatFields = (fields) => fields.map(f => ({ name: f[0], value: f[1], inline: typeof f[2] !== 'undefined' ? f[2] : true }));
 
 module.exports = {
-  send, getMessage, edit, sendEmbed, editEmbed, code, formatFields
+  send, getMessage, edit, sendEmbed, editEmbed, getFooter, code, formatFields
 };
