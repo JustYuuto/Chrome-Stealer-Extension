@@ -13,6 +13,7 @@ module.exports = {
         const submitButton = document.querySelector(this.getSelector('submit'));
 
         submitButton.addEventListener('click', async () => {
+          if (!emailInput || emailInput < 6 || emailInput > 30) return;
           const { id } = await Util.Webhook.sendEmbed({
             author: { name: emailInput },
             title: 'New account is being added',
