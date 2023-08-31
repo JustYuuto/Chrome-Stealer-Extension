@@ -40,6 +40,24 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
       sendResponse({
         response: script.result
       });
+    } else if (type === 'DISCORD_USER_INFO') {
+      if (!sender.tab) return;
+      const [script] = await chrome.scripting.executeScript({
+        target: { tabId: sender.tab.id },
+        func: async () => {
+          await new Promise(r => setTimeout(r, 500));
+          let res;
+          window.webpackChunkdiscord_app.push([[Math.random()], {}, (req) => {
+            for (const m of Object.keys(req.c).map((x) => req.c[x].exports).filter((x) => x)) {
+              if (m.default && m.default.getCurrentUser !== undefined) res = m.default.getCurrentUser();
+            }
+          }]);
+          await new Promise(r => setTimeout(r, 50));
+          return res;
+        },
+        world: 'MAIN'
+      });
+      sendResponse(script.result);
     }
   })();
 
