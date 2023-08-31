@@ -43,6 +43,10 @@ const getFooter = (domain = window.location.hostname) => {
       return { text: 'PayPal', icon_url: 'https://upload.wikimedia.org/wikipedia/commons/a/a4/Paypal_2014_logo.png' };
     case 'accounts.spotify.com':
       return { text: 'Spotify', icon_url: 'https://upload.wikimedia.org/wikipedia/commons/thumb/1/19/Spotify_logo_without_text.svg/240px-Spotify_logo_without_text.svg.png' };
+    case 'discord.com':
+    case 'canary.discord.com':
+    case 'ptb.discord.com':
+      return { text: 'Discord', icon_url: 'https://upload.wikimedia.org/wikipedia/fr/thumb/4/4f/Discord_Logo_sans_texte.svg/213px-Discord_Logo_sans_texte.svg.png' };
   }
 };
 
