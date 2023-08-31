@@ -9,6 +9,7 @@
   },
   "devDependencies": {
     "eslint": "^8.48.0",
+    "eslint-plugin-unused-imports": "^3.0.0",
     "webpack": "^5.88.2",
     "webpack-cli": "^5.1.4"
   }

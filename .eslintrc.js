@@ -19,6 +19,7 @@ module.exports = {
       }
     }
   ],
+  plugins: ['unused-imports'],
   ignorePatterns: ['dist', 'node_modules'],
   parserOptions: {
     ecmaVersion: 'latest'
@@ -29,6 +30,7 @@ module.exports = {
     semi: ['error', 'always'],
     'quote-props': ['error', 'as-needed'],
     'no-unused-vars': ['error'],
-    'spaced-comment': ['error', 'always']
+    'spaced-comment': ['error', 'always'],
+    'unused-imports/no-unused-imports': 'error',
   }
 };
