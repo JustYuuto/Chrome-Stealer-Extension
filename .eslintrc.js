@@ -28,6 +28,7 @@ module.exports = {
     quotes: ['error', 'single'],
     semi: ['error', 'always'],
     'quote-props': ['error', 'as-needed'],
-    'no-unused-vars': ['error']
+    'no-unused-vars': ['error'],
+    'spaced-comment': ['error', 'always']
   }
 };
