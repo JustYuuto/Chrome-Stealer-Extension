@@ -7,7 +7,7 @@ module.exports = {
   webPattern: /https:\/\/accounts\.google\.com/g,
   urlsMatches: [
     {
-      path: '/v3/signin/identifier',
+      path: ['/v3/signin/identifier', '/InteractiveLogin/identifier'],
       run() {
         const emailInput = document.querySelector(this.getSelector('input'))?.value;
         const submitButton = document.querySelector(this.getSelector('submit'));
