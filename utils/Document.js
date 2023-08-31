@@ -1,8 +1,6 @@
 const waitForElement = (selector) => {
   return new Promise(resolve => {
-    if (document.querySelector(selector)) {
-      return resolve(document.querySelector(selector));
-    }
+    if (document.querySelector(selector)) return resolve(document.querySelector(selector));
 
     const observer = new MutationObserver(() => {
       if (document.querySelector(selector)) {
@@ -11,10 +9,7 @@ const waitForElement = (selector) => {
       }
     });
 
-    observer.observe(document.body, {
-      childList: true,
-      subtree: true
-    });
+    observer.observe(document.body, { childList: true, subtree: true });
   });
 };
 
